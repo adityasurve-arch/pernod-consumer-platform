@@ -1,0 +1,918 @@
+{
+  "metadata": {
+    "generated_at": "2026-05-10T00:00:00",
+    "network_launch": "2024-11-01T00:00:00",
+    "cities": [
+      "Paris",
+      "Milan",
+      "Barcelona",
+      "Vienna",
+      "Lisbon"
+    ],
+    "experiment_brands": [
+      "Absolut",
+      "Beefeater",
+      "Jameson",
+      "Havana Club"
+    ]
+  },
+  "overview": {
+    "total_members": 25000,
+    "total_visits": 541537,
+    "total_drinks": 1574792,
+    "active_members_last_30d": 19257,
+    "drinks_last_week": 34293,
+    "avg_drinks_per_visit": 2.91,
+    "pernod_share": 40.9
+  },
+  "brand_equity_by_city": {
+    "Paris": {
+      "absolut_share": 52.9,
+      "house_share": 47.1,
+      "sample_size": 35197
+    },
+    "Milan": {
+      "absolut_share": 36.3,
+      "house_share": 63.7,
+      "sample_size": 11449
+    },
+    "Barcelona": {
+      "absolut_share": 32.3,
+      "house_share": 67.7,
+      "sample_size": 26870
+    },
+    "Vienna": {
+      "absolut_share": 53.6,
+      "house_share": 46.4,
+      "sample_size": 20854
+    },
+    "Lisbon": {
+      "absolut_share": 18.7,
+      "house_share": 81.3,
+      "sample_size": 8989
+    }
+  },
+  "competitor_breakdown_by_city": {
+    "Paris": {
+      "Absolut": 52.9,
+      "Smirnoff": 15.6,
+      "Grey Goose": 15.6,
+      "House vodka": 15.9,
+      "sample_size": 35197
+    },
+    "Milan": {
+      "Absolut": 36.3,
+      "Smirnoff": 21.4,
+      "Grey Goose": 21.5,
+      "House vodka": 20.8,
+      "sample_size": 11449
+    },
+    "Barcelona": {
+      "Absolut": 32.3,
+      "Smirnoff": 23.1,
+      "Grey Goose": 22.3,
+      "House vodka": 22.2,
+      "sample_size": 26870
+    },
+    "Vienna": {
+      "Absolut": 53.6,
+      "Smirnoff": 15.4,
+      "Grey Goose": 14.8,
+      "House vodka": 16.2,
+      "sample_size": 20854
+    },
+    "Lisbon": {
+      "Absolut": 18.7,
+      "Smirnoff": 25.9,
+      "Grey Goose": 26.5,
+      "House vodka": 28.9,
+      "sample_size": 8989
+    }
+  },
+  "network_competitor_share": {
+    "Absolut": 42.9,
+    "Smirnoff": 19.1,
+    "Grey Goose": 18.8,
+    "House vodka": 19.3,
+    "sample_size": 103359
+  },
+  "price_elasticity": {
+    "discount": {
+      "absolut_share": 60.9,
+      "sample_size": 41764
+    },
+    "parity": {
+      "absolut_share": 42.9,
+      "sample_size": 103359
+    },
+    "premium": {
+      "absolut_share": 22.1,
+      "sample_size": 57330
+    }
+  },
+  "cohort_curve": {
+    "0-3mo": {
+      "absolut_share": 35.9,
+      "sample_size": 49741
+    },
+    "3-6mo": {
+      "absolut_share": 38.7,
+      "sample_size": 48705
+    },
+    "6-9mo": {
+      "absolut_share": 40.6,
+      "sample_size": 45285
+    },
+    "9-12mo": {
+      "absolut_share": 43.2,
+      "sample_size": 33914
+    },
+    "12mo+": {
+      "absolut_share": 51.0,
+      "sample_size": 24808
+    }
+  },
+  "portfolio_by_city": {
+    "Paris": {
+      "pernod_share": 44.4,
+      "total_drinks": 483053
+    },
+    "Milan": {
+      "pernod_share": 38.9,
+      "total_drinks": 285661
+    },
+    "Barcelona": {
+      "pernod_share": 39.1,
+      "total_drinks": 403644
+    },
+    "Vienna": {
+      "pernod_share": 42.3,
+      "total_drinks": 256517
+    },
+    "Lisbon": {
+      "pernod_share": 35.9,
+      "total_drinks": 145917
+    }
+  },
+  "top_brands_by_city": {
+    "Paris": [
+      {
+        "brand": "House white wine",
+        "drinks": 36335
+      },
+      {
+        "brand": "House red wine",
+        "drinks": 36179
+      },
+      {
+        "brand": "Absolut",
+        "drinks": 33821
+      },
+      {
+        "brand": "Craft IPA",
+        "drinks": 24300
+      },
+      {
+        "brand": "Local lager",
+        "drinks": 23998
+      },
+      {
+        "brand": "Lillet",
+        "drinks": 18881
+      },
+      {
+        "brand": "Beefeater",
+        "drinks": 18731
+      },
+      {
+        "brand": "Jameson",
+        "drinks": 16420
+      },
+      {
+        "brand": "Havana Club",
+        "drinks": 16412
+      },
+      {
+        "brand": "Ricard",
+        "drinks": 14980
+      }
+    ],
+    "Milan": [
+      {
+        "brand": "House white wine",
+        "drinks": 28485
+      },
+      {
+        "brand": "House red wine",
+        "drinks": 28416
+      },
+      {
+        "brand": "Lillet",
+        "drinks": 15775
+      },
+      {
+        "brand": "Ricard",
+        "drinks": 11453
+      },
+      {
+        "brand": "Local lager",
+        "drinks": 11430
+      },
+      {
+        "brand": "Craft IPA",
+        "drinks": 11394
+      },
+      {
+        "brand": "Pernod",
+        "drinks": 11346
+      },
+      {
+        "brand": "Aperol",
+        "drinks": 9738
+      },
+      {
+        "brand": "Campari",
+        "drinks": 9595
+      },
+      {
+        "brand": "Jameson",
+        "drinks": 7935
+      }
+    ],
+    "Barcelona": [
+      {
+        "brand": "Local lager",
+        "drinks": 30649
+      },
+      {
+        "brand": "Craft IPA",
+        "drinks": 30138
+      },
+      {
+        "brand": "Beefeater",
+        "drinks": 30016
+      },
+      {
+        "brand": "House white wine",
+        "drinks": 20162
+      },
+      {
+        "brand": "House red wine",
+        "drinks": 19776
+      },
+      {
+        "brand": "Absolut",
+        "drinks": 16966
+      },
+      {
+        "brand": "Monkey 47",
+        "drinks": 14775
+      },
+      {
+        "brand": "House gin",
+        "drinks": 13402
+      },
+      {
+        "brand": "Bombay Sapphire",
+        "drinks": 12874
+      },
+      {
+        "brand": "Tanqueray",
+        "drinks": 12788
+      }
+    ],
+    "Vienna": [
+      {
+        "brand": "Local lager",
+        "drinks": 23336
+      },
+      {
+        "brand": "Craft IPA",
+        "drinks": 22767
+      },
+      {
+        "brand": "Absolut",
+        "drinks": 21094
+      },
+      {
+        "brand": "Monkey 47",
+        "drinks": 11326
+      },
+      {
+        "brand": "House white wine",
+        "drinks": 9171
+      },
+      {
+        "brand": "House red wine",
+        "drinks": 9003
+      },
+      {
+        "brand": "Chivas",
+        "drinks": 7853
+      },
+      {
+        "brand": "Jameson",
+        "drinks": 7794
+      },
+      {
+        "brand": "House vodka",
+        "drinks": 7451
+      },
+      {
+        "brand": "Smirnoff",
+        "drinks": 7221
+      }
+    ],
+    "Lisbon": [
+      {
+        "brand": "House white wine",
+        "drinks": 9546
+      },
+      {
+        "brand": "House red wine",
+        "drinks": 9546
+      },
+      {
+        "brand": "Craft IPA",
+        "drinks": 8807
+      },
+      {
+        "brand": "Local lager",
+        "drinks": 8777
+      },
+      {
+        "brand": "Havana Club",
+        "drinks": 7356
+      },
+      {
+        "brand": "Beefeater",
+        "drinks": 6456
+      },
+      {
+        "brand": "House vodka",
+        "drinks": 5105
+      },
+      {
+        "brand": "Grey Goose",
+        "drinks": 4777
+      },
+      {
+        "brand": "Smirnoff",
+        "drinks": 4673
+      },
+      {
+        "brand": "Monkey 47",
+        "drinks": 4346
+      }
+    ]
+  },
+  "dow_pattern": [
+    {
+      "day": "Monday",
+      "visits": 30047
+    },
+    {
+      "day": "Tuesday",
+      "visits": 40291
+    },
+    {
+      "day": "Wednesday",
+      "visits": 55707
+    },
+    {
+      "day": "Thursday",
+      "visits": 97080
+    },
+    {
+      "day": "Friday",
+      "visits": 132498
+    },
+    {
+      "day": "Saturday",
+      "visits": 131673
+    },
+    {
+      "day": "Sunday",
+      "visits": 54241
+    }
+  ],
+  "demographics_by_city": {
+    "Paris": {
+      "total_members": 6000,
+      "international_pct": 38.0,
+      "top_nationalities": [
+        {
+          "nationality": "France",
+          "count": 3719,
+          "pct": 62.0
+        },
+        {
+          "nationality": "Morocco",
+          "count": 305,
+          "pct": 5.1
+        },
+        {
+          "nationality": "Italy",
+          "count": 264,
+          "pct": 4.4
+        },
+        {
+          "nationality": "Spain",
+          "count": 242,
+          "pct": 4.0
+        },
+        {
+          "nationality": "China",
+          "count": 232,
+          "pct": 3.9
+        }
+      ],
+      "top_universities": [
+        {
+          "university": "Sorbonne",
+          "count": 1160
+        },
+        {
+          "university": "Paris-Cite",
+          "count": 1069
+        },
+        {
+          "university": "Sciences Po",
+          "count": 1050
+        },
+        {
+          "university": "ESCP Paris",
+          "count": 740
+        },
+        {
+          "university": "Assas",
+          "count": 626
+        }
+      ]
+    },
+    "Milan": {
+      "total_members": 4000,
+      "international_pct": 27.7,
+      "top_nationalities": [
+        {
+          "nationality": "Italy",
+          "count": 2892,
+          "pct": 72.3
+        },
+        {
+          "nationality": "Spain",
+          "count": 137,
+          "pct": 3.4
+        },
+        {
+          "nationality": "China",
+          "count": 128,
+          "pct": 3.2
+        },
+        {
+          "nationality": "Other",
+          "count": 111,
+          "pct": 2.8
+        },
+        {
+          "nationality": "Turkey",
+          "count": 99,
+          "pct": 2.5
+        }
+      ],
+      "top_universities": [
+        {
+          "university": "Bocconi",
+          "count": 1218
+        },
+        {
+          "university": "Politecnico di Milano",
+          "count": 885
+        },
+        {
+          "university": "Univ. degli Studi di Milano",
+          "count": 811
+        },
+        {
+          "university": "Cattolica",
+          "count": 394
+        },
+        {
+          "university": "IULM",
+          "count": 296
+        }
+      ]
+    },
+    "Barcelona": {
+      "total_members": 6500,
+      "international_pct": 33.6,
+      "top_nationalities": [
+        {
+          "nationality": "Spain",
+          "count": 4316,
+          "pct": 66.4
+        },
+        {
+          "nationality": "Italy",
+          "count": 325,
+          "pct": 5.0
+        },
+        {
+          "nationality": "France",
+          "count": 236,
+          "pct": 3.6
+        },
+        {
+          "nationality": "Mexico",
+          "count": 214,
+          "pct": 3.3
+        },
+        {
+          "nationality": "USA",
+          "count": 204,
+          "pct": 3.1
+        }
+      ],
+      "top_universities": [
+        {
+          "university": "Univ. de Barcelona",
+          "count": 2046
+        },
+        {
+          "university": "Pompeu Fabra",
+          "count": 1147
+        },
+        {
+          "university": "Univ. Autonoma BCN",
+          "count": 778
+        },
+        {
+          "university": "IESE",
+          "count": 776
+        },
+        {
+          "university": "ESADE",
+          "count": 755
+        }
+      ]
+    },
+    "Vienna": {
+      "total_members": 5000,
+      "international_pct": 42.4,
+      "top_nationalities": [
+        {
+          "nationality": "Austria",
+          "count": 2880,
+          "pct": 57.6
+        },
+        {
+          "nationality": "Germany",
+          "count": 396,
+          "pct": 7.9
+        },
+        {
+          "nationality": "Hungary",
+          "count": 191,
+          "pct": 3.8
+        },
+        {
+          "nationality": "Turkey",
+          "count": 166,
+          "pct": 3.3
+        },
+        {
+          "nationality": "Serbia",
+          "count": 161,
+          "pct": 3.2
+        }
+      ],
+      "top_universities": [
+        {
+          "university": "Univ. of Vienna",
+          "count": 2044
+        },
+        {
+          "university": "WU Wien",
+          "count": 1091
+        },
+        {
+          "university": "TU Wien",
+          "count": 815
+        },
+        {
+          "university": "BOKU",
+          "count": 290
+        },
+        {
+          "university": "MedUni Vienna",
+          "count": 286
+        }
+      ]
+    },
+    "Lisbon": {
+      "total_members": 3500,
+      "international_pct": 40.1,
+      "top_nationalities": [
+        {
+          "nationality": "Portugal",
+          "count": 2095,
+          "pct": 59.9
+        },
+        {
+          "nationality": "Brazil",
+          "count": 352,
+          "pct": 10.1
+        },
+        {
+          "nationality": "France",
+          "count": 145,
+          "pct": 4.1
+        },
+        {
+          "nationality": "Angola",
+          "count": 121,
+          "pct": 3.5
+        },
+        {
+          "nationality": "Other",
+          "count": 99,
+          "pct": 2.8
+        }
+      ],
+      "top_universities": [
+        {
+          "university": "Univ. de Lisboa",
+          "count": 1077
+        },
+        {
+          "university": "Nova SBE",
+          "count": 695
+        },
+        {
+          "university": "Catolica Lisbon",
+          "count": 663
+        },
+        {
+          "university": "ISCTE-IUL",
+          "count": 380
+        },
+        {
+          "university": "ISEG",
+          "count": 298
+        }
+      ]
+    }
+  },
+  "equity_over_time": {
+    "Paris": [
+      {
+        "week": 58,
+        "share": 55.2
+      },
+      {
+        "week": 59,
+        "share": 57.2
+      },
+      {
+        "week": 66,
+        "share": 57.3
+      },
+      {
+        "week": 67,
+        "share": 55.0
+      },
+      {
+        "week": 68,
+        "share": 56.3
+      },
+      {
+        "week": 69,
+        "share": 57.5
+      },
+      {
+        "week": 70,
+        "share": 57.3
+      },
+      {
+        "week": 73,
+        "share": 55.4
+      },
+      {
+        "week": 75,
+        "share": 58.1
+      },
+      {
+        "week": 77,
+        "share": 59.2
+      },
+      {
+        "week": 78,
+        "share": 59.0
+      },
+      {
+        "week": 79,
+        "share": 56.7
+      }
+    ],
+    "Milan": [
+      {
+        "week": 60,
+        "share": 36.2
+      },
+      {
+        "week": 61,
+        "share": 37.3
+      },
+      {
+        "week": 62,
+        "share": 34.8
+      },
+      {
+        "week": 65,
+        "share": 39.8
+      },
+      {
+        "week": 66,
+        "share": 38.1
+      },
+      {
+        "week": 69,
+        "share": 38.4
+      },
+      {
+        "week": 73,
+        "share": 37.1
+      },
+      {
+        "week": 74,
+        "share": 38.2
+      },
+      {
+        "week": 75,
+        "share": 36.5
+      },
+      {
+        "week": 76,
+        "share": 43.4
+      },
+      {
+        "week": 77,
+        "share": 39.9
+      },
+      {
+        "week": 79,
+        "share": 40.6
+      }
+    ],
+    "Barcelona": [
+      {
+        "week": 58,
+        "share": 33.1
+      },
+      {
+        "week": 59,
+        "share": 32.8
+      },
+      {
+        "week": 62,
+        "share": 38.0
+      },
+      {
+        "week": 64,
+        "share": 31.2
+      },
+      {
+        "week": 68,
+        "share": 36.1
+      },
+      {
+        "week": 69,
+        "share": 35.7
+      },
+      {
+        "week": 70,
+        "share": 35.0
+      },
+      {
+        "week": 72,
+        "share": 35.9
+      },
+      {
+        "week": 73,
+        "share": 15.3
+      },
+      {
+        "week": 77,
+        "share": 34.5
+      },
+      {
+        "week": 78,
+        "share": 36.3
+      },
+      {
+        "week": 79,
+        "share": 37.7
+      }
+    ],
+    "Vienna": [
+      {
+        "week": 60,
+        "share": 55.3
+      },
+      {
+        "week": 61,
+        "share": 56.6
+      },
+      {
+        "week": 62,
+        "share": 52.8
+      },
+      {
+        "week": 63,
+        "share": 51.4
+      },
+      {
+        "week": 64,
+        "share": 54.5
+      },
+      {
+        "week": 65,
+        "share": 53.6
+      },
+      {
+        "week": 66,
+        "share": 53.2
+      },
+      {
+        "week": 68,
+        "share": 55.3
+      },
+      {
+        "week": 69,
+        "share": 53.9
+      },
+      {
+        "week": 71,
+        "share": 56.5
+      },
+      {
+        "week": 73,
+        "share": 54.3
+      },
+      {
+        "week": 74,
+        "share": 57.7
+      }
+    ],
+    "Lisbon": [
+      {
+        "week": 53,
+        "share": 8.4
+      },
+      {
+        "week": 54,
+        "share": 20.7
+      },
+      {
+        "week": 55,
+        "share": 18.9
+      },
+      {
+        "week": 57,
+        "share": 19.3
+      },
+      {
+        "week": 59,
+        "share": 20.3
+      },
+      {
+        "week": 64,
+        "share": 19.0
+      },
+      {
+        "week": 65,
+        "share": 21.3
+      },
+      {
+        "week": 68,
+        "share": 16.8
+      },
+      {
+        "week": 69,
+        "share": 21.8
+      },
+      {
+        "week": 71,
+        "share": 21.5
+      },
+      {
+        "week": 76,
+        "share": 16.3
+      },
+      {
+        "week": 77,
+        "share": 19.2
+      }
+    ]
+  }
+}

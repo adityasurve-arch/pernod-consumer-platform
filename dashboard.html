@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pernod Consumer Behavior Platform — Demo</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0E0E10; --bg-elev: #18181B; --bg-card: #1F1F23;
+    --border: #2A2A2E; --text: #F5F5F7; --text-dim: #9A9AA0; --text-mute: #6E6E72;
+    --accent: #534AB7; --accent-soft: rgba(83, 74, 183, 0.15);
+    --green: #1D9E75; --red: #D9534F; --gold: #C8A24B;
+    --diageo: #F5A623; --bacardi: #4A90E2; --house: #6E6E72;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    font-size: 14px; line-height: 1.5; padding: 24px;
+    max-width: 1200px; margin: 0 auto;
+  }
+  header { border-bottom: 1px solid var(--border); padding-bottom: 18px; margin-bottom: 24px; }
+  .label-tiny {
+    font-size: 11px; color: var(--text-mute); text-transform: uppercase;
+    letter-spacing: 0.08em; margin-bottom: 6px;
+  }
+  h1 { font-size: 22px; font-weight: 500; margin-bottom: 4px; }
+  .subhead { color: var(--text-dim); font-size: 13px; }
+  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+  .kpi {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px;
+  }
+  .kpi-label { font-size: 12px; color: var(--text-dim); margin-bottom: 6px; }
+  .kpi-value { font-size: 22px; font-weight: 500; letter-spacing: -0.01em; }
+  .kpi-sub { font-size: 11px; color: var(--text-mute); margin-top: 2px; }
+  .nav { display: flex; gap: 6px; margin-bottom: 18px; flex-wrap: wrap; }
+  .nav-btn {
+    background: transparent; border: 1px solid var(--border); color: var(--text-dim);
+    border-radius: 6px; padding: 7px 14px; font-size: 13px; cursor: pointer;
+    font-family: inherit; transition: all 0.12s;
+  }
+  .nav-btn:hover { color: var(--text); border-color: var(--text-mute); }
+  .nav-btn.active {
+    background: var(--bg-card); border-color: var(--accent);
+    color: var(--text); font-weight: 500;
+  }
+  .panel {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 20px; margin-bottom: 16px;
+  }
+  .panel-title { font-size: 15px; font-weight: 500; margin-bottom: 4px; }
+  .panel-sub { font-size: 12px; color: var(--text-dim); margin-bottom: 16px; }
+  .chart-wrap { position: relative; width: 100%; height: 320px; }
+  .chart-wrap.tall { height: 380px; }
+  .insight {
+    background: var(--accent-soft); border-left: 2px solid var(--accent);
+    padding: 12px 14px; margin-top: 14px; border-radius: 0 6px 6px 0;
+    font-size: 13px; line-height: 1.55; color: #DDD8FB;
+  }
+  .insight-label {
+    font-size: 10px; color: var(--accent); text-transform: uppercase;
+    letter-spacing: 0.1em; margin-bottom: 4px; font-weight: 600;
+  }
+  .city-grid {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 16px;
+  }
+  .city-card {
+    background: var(--bg-elev); border: 1px solid var(--border);
+    border-radius: 6px; padding: 12px; cursor: pointer; transition: all 0.12s;
+  }
+  .city-card:hover { border-color: var(--text-mute); }
+  .city-card.selected { border-color: var(--accent); background: var(--accent-soft); }
+  .city-name { font-size: 13px; font-weight: 500; margin-bottom: 4px; }
+  .city-stat { font-size: 18px; font-weight: 500; }
+  .city-stat-label { font-size: 10px; color: var(--text-mute); text-transform: uppercase; letter-spacing: 0.06em; }
+  table.brands { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  table.brands td { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  table.brands td:last-child { text-align: right; color: var(--text-dim); font-variant-numeric: tabular-nums; }
+  .footer {
+    margin-top: 32px; padding-top: 18px; border-top: 1px solid var(--border);
+    color: var(--text-mute); font-size: 11px; line-height: 1.6;
+  }
+  .loading { text-align: center; padding: 60px; color: var(--text-dim); }
+  .error {
+    background: rgba(217, 83, 79, 0.1); border: 1px solid var(--red);
+    color: #FFB4B2; padding: 16px; border-radius: 6px; margin: 20px 0;
+  }
+  .summary-row {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+    margin-bottom: 14px;
+  }
+  .summary-card {
+    background: var(--bg-elev); border: 1px solid var(--border);
+    border-radius: 6px; padding: 10px 12px; text-align: center;
+  }
+  .summary-card-brand { font-size: 11px; color: var(--text-dim); margin-bottom: 4px; }
+  .summary-card-val { font-size: 20px; font-weight: 500; }
+  .summary-card-owner { font-size: 9px; color: var(--text-mute); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+  @media (max-width: 720px) {
+    .kpi-row { grid-template-columns: repeat(2, 1fr); }
+    .city-grid { grid-template-columns: repeat(2, 1fr); }
+    .summary-row { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<div id="app">
+  <div class="loading">Loading data…</div>
+</div>
+
+<script>
+let data = null;
+let activeView = 'equity';
+let activeCity = 'Paris';
+let mainChart = null;
+
+async function init() {
+  try {
+    const res = await fetch('summary.json');
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    data = await res.json();
+    render();
+  } catch (e) {
+    document.getElementById('app').innerHTML = `
+      <div class="error">
+        <strong>Couldn't load summary.json.</strong><br><br>
+        Make sure summary.json is in the same folder as this HTML file.<br>
+        If you're opening directly by double-clicking, browsers block local file reads.<br>
+        Run a local server in Terminal: <code>python3 -m http.server 8000</code><br>
+        Then open: <code>http://localhost:8000/dashboard.html</code><br><br>
+        <small>Error: ${e.message}</small>
+      </div>
+    `;
+  }
+}
+
+function fmt(n) { return n.toLocaleString('en-US'); }
+
+function render() {
+  document.getElementById('app').innerHTML = `
+    <header>
+      <div class="label-tiny">Network overview · week 19, 2026</div>
+      <h1>Pernod Consumer Behavior Platform</h1>
+      <div class="subhead">5 cities · 25,000 members · 18 months of behavioral data</div>
+    </header>
+
+    <div class="kpi-row">
+      <div class="kpi">
+        <div class="kpi-label">Total members</div>
+        <div class="kpi-value">${fmt(data.overview.total_members)}</div>
+        <div class="kpi-sub">${fmt(data.overview.active_members_last_30d)} active in last 30 days</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Drinks logged</div>
+        <div class="kpi-value">${fmt(data.overview.total_drinks)}</div>
+        <div class="kpi-sub">${fmt(data.overview.drinks_last_week)} in the last week</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Avg drinks · visit</div>
+        <div class="kpi-value">${data.overview.avg_drinks_per_visit}</div>
+        <div class="kpi-sub">across ${fmt(data.overview.total_visits)} visits</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Pernod portfolio share</div>
+        <div class="kpi-value">${data.overview.pernod_share}%</div>
+        <div class="kpi-sub">of all logged drinks</div>
+      </div>
+    </div>
+
+    <div class="nav">
+      <button class="nav-btn ${activeView==='equity'?'active':''}" onclick="setView('equity')">Brand equity by city</button>
+      <button class="nav-btn ${activeView==='competitor'?'active':''}" onclick="setView('competitor')">Vodka head-to-head</button>
+      <button class="nav-btn ${activeView==='elasticity'?'active':''}" onclick="setView('elasticity')">Price elasticity · Absolut</button>
+      <button class="nav-btn ${activeView==='cohort'?'active':''}" onclick="setView('cohort')">Gen Z trade-up curve</button>
+      <button class="nav-btn ${activeView==='city'?'active':''}" onclick="setView('city')">Single-city drill-down</button>
+    </div>
+
+    <div id="view-area"></div>
+
+    <div class="footer">
+      Demo of a venue-network data infrastructure proposal for Pernod Ricard. Data is simulated to mimic patterns the production system would surface — 25,000 members, 1.57M drinks, 18 months of history. The production version would use real POS data ingested via API in real time.
+    </div>
+  `;
+  renderView();
+}
+
+function setView(v) { activeView = v; render(); }
+function setCity(c) { activeCity = c; if (activeView === 'city') renderView(); }
+
+function renderView() {
+  const area = document.getElementById('view-area');
+  if (mainChart) { mainChart.destroy(); mainChart = null; }
+  if (activeView === 'equity') renderEquity(area);
+  else if (activeView === 'competitor') renderCompetitor(area);
+  else if (activeView === 'elasticity') renderElasticity(area);
+  else if (activeView === 'cohort') renderCohort(area);
+  else if (activeView === 'city') renderCity(area);
+}
+
+function renderEquity(area) {
+  const cities = ["Paris", "Milan", "Barcelona", "Vienna", "Lisbon"];
+  const eq = cities.map(c => data.brand_equity_by_city[c].absolut_share);
+  const house = cities.map(c => data.brand_equity_by_city[c].house_share);
+  const sortedByEquity = cities.slice().sort((a,b) => data.brand_equity_by_city[b].absolut_share - data.brand_equity_by_city[a].absolut_share);
+  const top = sortedByEquity[0];
+  const bottom = sortedByEquity[sortedByEquity.length-1];
+  const gap = data.brand_equity_by_city[top].absolut_share - data.brand_equity_by_city[bottom].absolut_share;
+
+  area.innerHTML = `
+    <div class="panel">
+      <div class="panel-title">Vodka brand share when prices are equal</div>
+      <div class="panel-sub">% of vodka orders going to Absolut when priced at parity with house vodka. Last 18 months of parity-week data, by city.</div>
+      <div class="chart-wrap"><canvas id="mainChart"></canvas></div>
+      <div class="insight">
+        <div class="insight-label">What this tells you</div>
+        Absolut commands a strong brand premium in <strong>${top}</strong> (${data.brand_equity_by_city[top].absolut_share}%) and barely outperforms house vodka in <strong>${bottom}</strong> (${data.brand_equity_by_city[bottom].absolut_share}%). That's a ${gap.toFixed(1)}-point gap between Pernod's strongest and weakest student markets — driven by brand familiarity, marketing investment, and local competitive intensity. Marketing budget allocation should follow opportunity, not market size.
+      </div>
+    </div>
+  `;
+  const ctx = document.getElementById('mainChart').getContext('2d');
+  mainChart = new Chart(ctx, {
+    type: 'bar',
+    data: { labels: cities, datasets: [
+      { label: 'Absolut', data: eq, backgroundColor: '#534AB7', borderRadius: 4 },
+      { label: 'House vodka', data: house, backgroundColor: '#3A3A3F', borderRadius: 4 },
+    ]},
+    options: {
+      responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+      scales: {
+        x: { stacked: true, max: 100, ticks: { color: '#9A9AA0', callback: v => v + '%' }, grid: { color: '#2A2A2E' } },
+        y: { stacked: true, ticks: { color: '#F5F5F7' }, grid: { display: false } }
+      },
+      plugins: {
+        legend: { labels: { color: '#9A9AA0' } },
+        tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${ctx.parsed.x}%` } }
+      }
+    }
+  });
+}
+
+function renderCompetitor(area) {
+  const cities = ["Paris", "Milan", "Barcelona", "Vienna", "Lisbon"];
+  const cb = data.competitor_breakdown_by_city;
+  const ncs = data.network_competitor_share;
+
+  // Find Pernod's biggest weakness
+  const weakestCity = cities.slice().sort((a,b) => cb[a].Absolut - cb[b].Absolut)[0];
+  const strongestCity = cities.slice().sort((a,b) => cb[b].Absolut - cb[a].Absolut)[0];
+  const competitorInWeakest = cb[weakestCity].Smirnoff > cb[weakestCity]["Grey Goose"] ? "Smirnoff" : "Grey Goose";
+  const competitorOwner = competitorInWeakest === "Smirnoff" ? "Diageo" : "Bacardi";
+
+  area.innerHTML = `
+    <div class="panel">
+      <div class="panel-title">Vodka head-to-head: Pernod vs competitors at price parity</div>
+      <div class="panel-sub">Real revealed-behavior share of every vodka order in parity-price weeks. Pernod's Absolut versus Diageo's Smirnoff, Bacardi's Grey Goose, and house vodka. By city.</div>
+
+      <div class="summary-row">
+        <div class="summary-card">
+          <div class="summary-card-brand">Absolut</div>
+          <div class="summary-card-val" style="color: #534AB7;">${ncs.Absolut}%</div>
+          <div class="summary-card-owner">Pernod</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-card-brand">Smirnoff</div>
+          <div class="summary-card-val" style="color: #F5A623;">${ncs.Smirnoff}%</div>
+          <div class="summary-card-owner">Diageo</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-card-brand">Grey Goose</div>
+          <div class="summary-card-val" style="color: #4A90E2;">${ncs["Grey Goose"]}%</div>
+          <div class="summary-card-owner">Bacardi</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-card-brand">House vodka</div>
+          <div class="summary-card-val" style="color: #6E6E72;">${ncs["House vodka"]}%</div>
+          <div class="summary-card-owner">Generic</div>
+        </div>
+      </div>
+
+      <div class="chart-wrap tall"><canvas id="mainChart"></canvas></div>
+      <div class="insight">
+        <div class="insight-label">What this tells you</div>
+        Absolut dominates in <strong>${strongestCity}</strong> (${cb[strongestCity].Absolut}%), but in <strong>${weakestCity}</strong> Pernod's share collapses to ${cb[weakestCity].Absolut}% — and ${competitorInWeakest} (${competitorOwner}) eats into the gap with ${cb[weakestCity][competitorInWeakest]}%. This is the chart Pernod has been trying to build for ten years through retail data: which competitor brand is taking share, in which market, when prices are equal. Currently their pricing teams treat all five markets the same. The data says ${weakestCity} needs a different strategy than ${strongestCity}.
+      </div>
+    </div>
+  `;
+
+  const ctx = document.getElementById('mainChart').getContext('2d');
+  mainChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: cities,
+      datasets: [
+        { label: 'Absolut (Pernod)', data: cities.map(c => cb[c].Absolut), backgroundColor: '#534AB7', borderRadius: 4 },
+        { label: 'Smirnoff (Diageo)', data: cities.map(c => cb[c].Smirnoff), backgroundColor: '#F5A623', borderRadius: 4 },
+        { label: 'Grey Goose (Bacardi)', data: cities.map(c => cb[c]["Grey Goose"]), backgroundColor: '#4A90E2', borderRadius: 4 },
+        { label: 'House vodka', data: cities.map(c => cb[c]["House vodka"]), backgroundColor: '#6E6E72', borderRadius: 4 },
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      scales: {
+        y: { stacked: true, max: 100, ticks: { color: '#9A9AA0', callback: v => v + '%' }, grid: { color: '#2A2A2E' }, title: { display: true, text: 'Share of vodka orders at parity', color: '#9A9AA0' } },
+        x: { stacked: true, ticks: { color: '#F5F5F7' }, grid: { display: false } }
+      },
+      plugins: {
+        legend: { labels: { color: '#9A9AA0' } },
+        tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y}%` } }
+      }
+    }
+  });
+}
+
+function renderElasticity(area) {
+  const labels = ['Discount (-8%)', 'Parity', 'Premium (+18%)'];
+  const shares = [
+    data.price_elasticity.discount.absolut_share,
+    data.price_elasticity.parity.absolut_share,
+    data.price_elasticity.premium.absolut_share,
+  ];
+  area.innerHTML = `
+    <div class="panel">
+      <div class="panel-title">Absolut share of vodka orders, by price level</div>
+      <div class="panel-sub">Network-wide. Each bar is real revealed-behavior data from price experiments run across all five cities over 18 months.</div>
+      <div class="chart-wrap"><canvas id="mainChart"></canvas></div>
+      <div class="insight">
+        <div class="insight-label">What this tells you</div>
+        At parity with house vodka, ${shares[1]}% of students choose Absolut. Drop the price 8% and that jumps to ${shares[0]}%. Raise it 18% and it falls to ${shares[2]}%. That's the actual demand curve — measured in real money decisions, not surveys. Implication: Pernod's current on-trade pricing is probably above the optimal point. Sweet spot looks like parity-to-slight-premium (3-7% over house), capturing brand value without losing the price-sensitive student segment.
+      </div>
+    </div>
+  `;
+  const ctx = document.getElementById('mainChart').getContext('2d');
+  mainChart = new Chart(ctx, {
+    type: 'bar',
+    data: { labels, datasets: [{
+      label: 'Absolut share', data: shares,
+      backgroundColor: ['#1D9E75', '#534AB7', '#D9534F'], borderRadius: 4,
+    }]},
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      scales: {
+        y: { max: 80, ticks: { color: '#9A9AA0', callback: v => v + '%' }, grid: { color: '#2A2A2E' }, title: { display: true, text: 'Share of vodka orders', color: '#9A9AA0' } },
+        x: { ticks: { color: '#F5F5F7' }, grid: { display: false } }
+      },
+      plugins: { legend: { display: false } }
+    }
+  });
+}
+
+function renderCohort(area) {
+  const buckets = ["0-3mo", "3-6mo", "6-9mo", "9-12mo", "12mo+"];
+  const shares = buckets.map(b => data.cohort_curve[b].absolut_share);
+  const start = shares[0];
+  const end = shares[shares.length - 1];
+  const lift = end - start;
+  area.innerHTML = `
+    <div class="panel">
+      <div class="panel-title">Absolut share among vodka drinkers, by member tenure</div>
+      <div class="panel-sub">Cohort analysis. The longer someone has been a member, the more likely they are to choose Absolut over cheaper alternatives. This is how premium brand habit forms.</div>
+      <div class="chart-wrap"><canvas id="mainChart"></canvas></div>
+      <div class="insight">
+        <div class="insight-label">What this tells you</div>
+        New members (0-3 months) choose Absolut ${start}% of the time. After 12+ months, that climbs to ${end}% — a ${lift.toFixed(1)}-point lift. The trade-up window is real and measurable. This is the data Pernod's been guessing at for thirty years: when does an 18-year-old become a premium drinker, and how can marketing accelerate that transition? Now you can see it.
+      </div>
+    </div>
+  `;
+  const ctx = document.getElementById('mainChart').getContext('2d');
+  mainChart = new Chart(ctx, {
+    type: 'line',
+    data: { labels: buckets, datasets: [{
+      label: 'Absolut share', data: shares,
+      borderColor: '#1D9E75', backgroundColor: 'rgba(29, 158, 117, 0.15)',
+      fill: true, tension: 0.3, pointRadius: 6, pointBackgroundColor: '#1D9E75',
+    }]},
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      scales: {
+        y: { min: 30, max: 60, ticks: { color: '#9A9AA0', callback: v => v + '%' }, grid: { color: '#2A2A2E' }, title: { display: true, text: '% choosing Absolut', color: '#9A9AA0' } },
+        x: { ticks: { color: '#F5F5F7' }, grid: { display: false }, title: { display: true, text: 'Member tenure', color: '#9A9AA0' } }
+      },
+      plugins: { legend: { display: false } }
+    }
+  });
+}
+
+function renderCity(area) {
+  const cities = ["Paris", "Milan", "Barcelona", "Vienna", "Lisbon"];
+  const c = activeCity;
+  const demo = data.demographics_by_city[c];
+  const eq = data.brand_equity_by_city[c];
+  const portfolio = data.portfolio_by_city[c];
+  const topBrands = data.top_brands_by_city[c];
+
+  area.innerHTML = `
+    <div class="city-grid">
+      ${cities.map(city => `
+        <div class="city-card ${city===c?'selected':''}" onclick="setCity('${city}')">
+          <div class="city-name">${city}</div>
+          <div class="city-stat">${data.brand_equity_by_city[city].absolut_share}%</div>
+          <div class="city-stat-label">Absolut at parity</div>
+        </div>
+      `).join('')}
+    </div>
+    <div class="panel">
+      <div class="panel-title">${c} · venue snapshot</div>
+      <div class="panel-sub">${fmt(demo.total_members)} members · ${demo.international_pct}% international · top universities: ${demo.top_universities.slice(0,3).map(u=>u.university).join(', ')}</div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 18px;">
+        <div>
+          <div class="label-tiny">Top 10 brands ordered</div>
+          <table class="brands">
+            ${topBrands.map(b => `<tr><td>${b.brand}</td><td>${fmt(b.drinks)}</td></tr>`).join('')}
+          </table>
+        </div>
+        <div>
+          <div class="label-tiny">Demographics</div>
+          <table class="brands">
+            <tr><td>Members</td><td>${fmt(demo.total_members)}</td></tr>
+            <tr><td>International</td><td>${demo.international_pct}%</td></tr>
+            <tr><td>Pernod portfolio share</td><td>${portfolio.pernod_share}%</td></tr>
+            <tr><td>Absolut at parity</td><td>${eq.absolut_share}%</td></tr>
+            <tr><td>Total drinks logged</td><td>${fmt(portfolio.total_drinks)}</td></tr>
+          </table>
+          <div class="label-tiny" style="margin-top: 18px;">Top nationalities</div>
+          <table class="brands">
+            ${demo.top_nationalities.map(n => `<tr><td>${n.nationality}</td><td>${n.pct}%</td></tr>`).join('')}
+          </table>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+init();
+</script>
+</body>
+</html>
