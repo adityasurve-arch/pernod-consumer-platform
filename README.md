@@ -2,7 +2,7 @@
 
 **→ [Live dashboard](https://adityasurve-arch.github.io/pernod-consumer-platform/dashboard.html)**
 
-A behavioral data prototype for Pernod Ricard, built by a 23 year old who's exactly the kind of consumer Pernod is trying to figure out.
+A behavioral data prototype for Pernod Ricard, built from the customer side of the bar.
 
 ---
 
