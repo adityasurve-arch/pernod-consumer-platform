@@ -20,7 +20,7 @@ Pernod has surveys, scanner data, and consultants. They don't have a way to watc
 
 ## Why I built it instead of just applying
 
-I applied to Pernod eight times. Got rejected each time, with one interview that didn't go well. The standard advice is: tailor your CV harder, write better cover letters, pass the ATS, hope someone reads it among the two hundred other applications.
+I applied to Pernod eight times. Got rejected each time. The standard advice is: tailor your CV harder, write better cover letters, pass the ATS, hope someone reads it among the two hundred other applications.
 
 I got tired of that. I'm not a Pernod analyst, I'm not from the spirits industry, and I'm not going to out-credential the people they actually shortlist. But I am the customer they want to understand. So I sat down with that perspective and built what I'd want to see if I were them.
 
