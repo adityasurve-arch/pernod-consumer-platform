@@ -1,6 +1,6 @@
 # Pernod Consumer Behavior Platform
 
-A behavioral data prototype for Pernod Ricard, built by a 22-year-old who's exactly the kind of consumer Pernod is trying to figure out.
+A behavioral data prototype for Pernod Ricard, built by a 23 year old who's exactly the kind of consumer Pernod is trying to figure out.
 
 ---
 
