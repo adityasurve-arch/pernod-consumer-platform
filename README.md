@@ -12,7 +12,7 @@ That's a structural problem for an entire industry, and it's a strategic problem
 
 But here's the thing the surveys miss: a lot of us aren't sober-curious. We just can't afford Absolut yet. I'm a student in Europe. When I want a vodka soda, I'm picking house vodka because alcohol is taxed, premium brands are expensive, and I'm not earning. Plenty of people I know think exactly this way: "I'll buy the good stuff when I start working." We're not lost to Pernod. We're the customers they'll have in five years and they have no idea what we currently think.
 
-Pernod has surveys, scanner data, and consultants. They don't have a way to watch a 22-year-old in Paris or Lisbon or Vienna actually choose a brand, in real money, at the moment they choose it. That's the gap this project is about.
+Pernod has surveys, scanner data, and consultants. They don't have a way to watch a 20 year old in Paris or Lisbon or Vienna actually choose a brand, in real money, at the moment they choose it. That's the gap this project is about.
 
 ---
 
