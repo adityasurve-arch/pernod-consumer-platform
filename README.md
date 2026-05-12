@@ -62,7 +62,7 @@ To make the platform observable, prices for Pernod's headline brands get randomi
 
 ## A note on what I am and what I'm not
 
-I'm a student at ESCP. I drink at the campus bars in Paris and Turin. I'm not from the spirits industry, and I'm not going to pretend I understand it better than the people who've spent twenty years inside it. What I have is a perspective from the other side of the bar. The consumer perspective Pernod is currently guessing about.
+I'm a masters in management student at ESCP. I'm not from the spirits industry, and I'm not going to pretend I understand it better than the people who've spent twenty years inside it. What I have is a perspective from the other side of the bar. The consumer perspective Pernod is currently guessing about.
 
 This project is what that perspective looks like when it tries to build something useful. The methodology is honest, the limitations are documented, and the strategic questions it asks are the ones I think Pernod is actually facing.
 
@@ -72,4 +72,4 @@ If you want to talk about any of it: aditya.surve@edu.escp.eu
 
 **Aditya Surve**
 
-Built May 2026
+
