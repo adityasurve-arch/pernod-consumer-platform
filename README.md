@@ -16,17 +16,6 @@ But here's the thing the surveys miss: a lot of us aren't sober-curious. We just
 
 Pernod has surveys, scanner data, and consultants. They don't have a way to watch a 20 year old in Paris or Lisbon or Vienna actually choose a brand, in real money, at the moment they choose it. That's the gap this project is about.
 
----
-
-## Why I built it instead of just applying
-
-I applied to Pernod eight times. Got rejected each time. The standard advice is: tailor your CV harder, write better cover letters, pass the ATS, hope someone reads it among the two hundred other applications.
-
-I got tired of that. I'm not a Pernod analyst, I'm not from the spirits industry, and I'm not going to out-credential the people they actually shortlist. But I am the customer they want to understand. So I sat down with that perspective and built what I'd want to see if I were them.
-
-This project is the result. It's a working prototype of a data infrastructure that would let Pernod see, week by week, what students like me are actually choosing, not what we say in surveys.
-
----
 
 ## How it would actually work
 
