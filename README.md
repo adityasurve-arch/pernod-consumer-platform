@@ -18,6 +18,8 @@ A lot of young consumers aren't lost to the category. They just can't afford pre
 
 ## How it works
 
+What follows describes the production model. Right now it's a prototype: simulated data and a working dashboard, built to test whether the logic holds before any venues come on board.
+
 Quarter operates a venue network — five partner bars across **Paris, Milan, Barcelona, Vienna, and Lisbon**. Student-dense European cities where premium drinking habits are forming.
 
 When a consumer walks in, they join via a free membership app (Nightlight), verified for legal drinking age and GDPR-compliant. Every drink they order is logged against their member ID: which brand, what category, at what price, with whom, on what day.
