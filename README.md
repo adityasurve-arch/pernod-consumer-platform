@@ -1,6 +1,6 @@
 # Quarter — Behavioral Data Platform
 
-**→ [Live dashboard](https://adityasurve-arch.github.io/pernod-consumer-platform/dashboard.html)**
+**→ [Live dashboard](https://adityasurve-arch.github.io/QuarterXNightlight/dashboard.html)**
 
 Quarter is a behavioral data platform for alcohol brands, built from the consumer side of the bar.
 
@@ -40,7 +40,7 @@ To make pricing behaviour measurable, prices for tracked brands rotate weekly �
 * Gen Z trade-up curve — how a 19-year-old becomes a premium drinker over time
 * Single-city drill-down — Paris, Milan, Barcelona, Vienna, Lisbon
 
-→ **Live:** [adityasurve-arch.github.io/pernod-consumer-platform/dashboard.html](https://adityasurve-arch.github.io/pernod-consumer-platform/dashboard.html)
+→ **Live:** [https://adityasurve-arch.github.io/QuarterXNightlight/dashboard.html]
 
 **A simulated dataset** — 25,000 members, 541,000 visits, 1.57M logged drinks across five cities, 18 months of behavioral history. Patterns are calibrated to real industry research; methodology is identical to what would run on live POS data in production.
 
