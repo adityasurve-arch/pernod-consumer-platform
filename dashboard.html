@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pernod Consumer Behavior Platform — Demo</title>
+<title>Quarter · Behavioral Data Platform</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
   :root {
@@ -142,8 +142,8 @@ function fmt(n) { return n.toLocaleString('en-US'); }
 function render() {
   document.getElementById('app').innerHTML = `
     <header>
-      <div class="label-tiny">Network overview · week 19, 2026</div>
-      <h1>Pernod Consumer Behavior Platform</h1>
+      <div class="label-tiny" style="display:flex;align-items:center;gap:8px;"><span style="background:#534AB7;color:white;font-weight:700;padding:2px 8px;border-radius:4px;letter-spacing:0.05em;">Q</span> Quarter · Network overview · week 19, 2026</div>
+      <h1>Quarter</h1>
       <div class="subhead">5 cities · 25,000 members · 18 months of behavioral data</div>
     </header>
 
@@ -164,8 +164,8 @@ function render() {
         <div class="kpi-sub">across ${fmt(data.overview.total_visits)} visits</div>
       </div>
       <div class="kpi">
-        <div class="kpi-label">Pernod portfolio share</div>
-        <div class="kpi-value">${data.overview.pernod_share}%</div>
+        <div class="kpi-label">Partner portfolio share</div>
+        <div class="kpi-value">${data.overview.partner_share ?? data.overview.pernod_share}%</div>
         <div class="kpi-sub">of all logged drinks</div>
       </div>
     </div>
@@ -181,7 +181,7 @@ function render() {
     <div id="view-area"></div>
 
     <div class="footer">
-      Demo of a venue-network data infrastructure proposal for Pernod Ricard. Data is simulated to mimic patterns the production system would surface — 25,000 members, 1.57M drinks, 18 months of history. The production version would use real POS data ingested via API in real time.
+      Quarter is a behavioral data platform for alcohol brands. Data shown is simulated to demonstrate the depth of insight the live network surfaces — 25,000 members, 1.57M drinks, 18 months of history. The production system ingests real POS data via API in real time.
     </div>
   `;
   renderView();
@@ -216,7 +216,7 @@ function renderEquity(area) {
       <div class="chart-wrap"><canvas id="mainChart"></canvas></div>
       <div class="insight">
         <div class="insight-label">What this tells you</div>
-        Absolut commands a strong brand premium in <strong>${top}</strong> (${data.brand_equity_by_city[top].absolut_share}%) and barely outperforms house vodka in <strong>${bottom}</strong> (${data.brand_equity_by_city[bottom].absolut_share}%). That's a ${gap.toFixed(1)}-point gap between Pernod's strongest and weakest student markets — driven by brand familiarity, marketing investment, and local competitive intensity. Marketing budget allocation should follow opportunity, not market size.
+        Absolut commands a strong brand premium in <strong>${top}</strong> (${data.brand_equity_by_city[top].absolut_share}%) and barely outperforms house vodka in <strong>${bottom}</strong> (${data.brand_equity_by_city[bottom].absolut_share}%). That's a ${gap.toFixed(1)}-point gap between the strongest and weakest student markets — driven by brand familiarity, marketing investment, and local competitive intensity. Marketing budget allocation should follow opportunity, not market size.
       </div>
     </div>
   `;
@@ -246,7 +246,7 @@ function renderCompetitor(area) {
   const cb = data.competitor_breakdown_by_city;
   const ncs = data.network_competitor_share;
 
-  // Find Pernod's biggest weakness
+  // Find weakest city for Absolut
   const weakestCity = cities.slice().sort((a,b) => cb[a].Absolut - cb[b].Absolut)[0];
   const strongestCity = cities.slice().sort((a,b) => cb[b].Absolut - cb[a].Absolut)[0];
   const competitorInWeakest = cb[weakestCity].Smirnoff > cb[weakestCity]["Grey Goose"] ? "Smirnoff" : "Grey Goose";
@@ -254,14 +254,14 @@ function renderCompetitor(area) {
 
   area.innerHTML = `
     <div class="panel">
-      <div class="panel-title">Vodka head-to-head: Pernod vs competitors at price parity</div>
-      <div class="panel-sub">Real revealed-behavior share of every vodka order in parity-price weeks. Pernod's Absolut versus Diageo's Smirnoff, Bacardi's Grey Goose, and house vodka. By city.</div>
+      <div class="panel-title">Vodka head-to-head: Brand competition at price parity</div>
+      <div class="panel-sub">Real revealed-behavior share of every vodka order in parity-price weeks. Absolut versus Diageo's Smirnoff, Bacardi's Grey Goose, and house vodka. By city.</div>
 
       <div class="summary-row">
         <div class="summary-card">
           <div class="summary-card-brand">Absolut</div>
           <div class="summary-card-val" style="color: #534AB7;">${ncs.Absolut}%</div>
-          <div class="summary-card-owner">Pernod</div>
+          <div class="summary-card-owner">Partner/div>
         </div>
         <div class="summary-card">
           <div class="summary-card-brand">Smirnoff</div>
@@ -283,7 +283,7 @@ function renderCompetitor(area) {
       <div class="chart-wrap tall"><canvas id="mainChart"></canvas></div>
       <div class="insight">
         <div class="insight-label">What this tells you</div>
-        Absolut dominates in <strong>${strongestCity}</strong> (${cb[strongestCity].Absolut}%), but in <strong>${weakestCity}</strong> Pernod's share collapses to ${cb[weakestCity].Absolut}% — and ${competitorInWeakest} (${competitorOwner}) eats into the gap with ${cb[weakestCity][competitorInWeakest]}%. This is the chart Pernod has been trying to build for ten years through retail data: which competitor brand is taking share, in which market, when prices are equal. Currently their pricing teams treat all five markets the same. The data says ${weakestCity} needs a different strategy than ${strongestCity}.
+        Absolut dominates in <strong>${strongestCity}</strong> (${cb[strongestCity].Absolut}%), but in <strong>${weakestCity}</strong> Absolut's share collapses to ${cb[weakestCity].Absolut}% — and ${competitorInWeakest} (${competitorOwner}) eats into the gap with ${cb[weakestCity][competitorInWeakest]}%. This is the chart brands have been trying to build for years through retail data: which competitor brand is taking share, in which market, when prices are equal. Currently their pricing teams treat all five markets the same. The data says ${weakestCity} needs a different strategy than ${strongestCity}.
       </div>
     </div>
   `;
@@ -294,7 +294,7 @@ function renderCompetitor(area) {
     data: {
       labels: cities,
       datasets: [
-        { label: 'Absolut (Pernod)', data: cities.map(c => cb[c].Absolut), backgroundColor: '#534AB7', borderRadius: 4 },
+        { label: 'Absolut', data: cities.map(c => cb[c].Absolut), backgroundColor: '#534AB7', borderRadius: 4 },
         { label: 'Smirnoff (Diageo)', data: cities.map(c => cb[c].Smirnoff), backgroundColor: '#F5A623', borderRadius: 4 },
         { label: 'Grey Goose (Bacardi)', data: cities.map(c => cb[c]["Grey Goose"]), backgroundColor: '#4A90E2', borderRadius: 4 },
         { label: 'House vodka', data: cities.map(c => cb[c]["House vodka"]), backgroundColor: '#6E6E72', borderRadius: 4 },
@@ -328,7 +328,7 @@ function renderElasticity(area) {
       <div class="chart-wrap"><canvas id="mainChart"></canvas></div>
       <div class="insight">
         <div class="insight-label">What this tells you</div>
-        At parity with house vodka, ${shares[1]}% of students choose Absolut. Drop the price 8% and that jumps to ${shares[0]}%. Raise it 18% and it falls to ${shares[2]}%. That's the actual demand curve — measured in real money decisions, not surveys. Implication: Pernod's current on-trade pricing is probably above the optimal point. Sweet spot looks like parity-to-slight-premium (3-7% over house), capturing brand value without losing the price-sensitive student segment.
+        At parity with house vodka, ${shares[1]}% of students choose Absolut. Drop the price 8% and that jumps to ${shares[0]}%. Raise it 18% and it falls to ${shares[2]}%. That's the actual demand curve — measured in real money decisions, not surveys. Implication: Current on-trade pricing for Absolut is probably above the optimal point. Sweet spot looks like parity-to-slight-premium (3-7% over house), capturing brand value without losing the price-sensitive student segment.
       </div>
     </div>
   `;
@@ -363,7 +363,7 @@ function renderCohort(area) {
       <div class="chart-wrap"><canvas id="mainChart"></canvas></div>
       <div class="insight">
         <div class="insight-label">What this tells you</div>
-        New members (0-3 months) choose Absolut ${start}% of the time. After 12+ months, that climbs to ${end}% — a ${lift.toFixed(1)}-point lift. The trade-up window is real and measurable. This is the data Pernod's been guessing at for thirty years: when does an 18-year-old become a premium drinker, and how can marketing accelerate that transition? Now you can see it.
+        New members (0-3 months) choose Absolut ${start}% of the time. After 12+ months, that climbs to ${end}% — a ${lift.toFixed(1)}-point lift. The trade-up window is real and measurable. This is the data brands have been guessing at for years: when does an 18-year-old become a premium drinker, and how can marketing accelerate that transition? Now you can see it.
       </div>
     </div>
   `;
@@ -419,7 +419,7 @@ function renderCity(area) {
           <table class="brands">
             <tr><td>Members</td><td>${fmt(demo.total_members)}</td></tr>
             <tr><td>International</td><td>${demo.international_pct}%</td></tr>
-            <tr><td>Pernod portfolio share</td><td>${portfolio.pernod_share}%</td></tr>
+            <tr><td>Partner portfolio share</td><td>${portfolio.partner_share ?? portfolio.pernod_share}%</td></tr>
             <tr><td>Absolut at parity</td><td>${eq.absolut_share}%</td></tr>
             <tr><td>Total drinks logged</td><td>${fmt(portfolio.total_drinks)}</td></tr>
           </table>
